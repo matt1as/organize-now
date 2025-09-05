@@ -1,17 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 
-export default function AddMemberPage({
-  params
-}: {
-  params: { id: string }
-}) {
+export default function AddMemberPage() {
   const router = useRouter()
   const supabase = createClient()
+  const { id } = useParams<{ id: string }>()
   
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -43,7 +40,7 @@ export default function AddMemberPage({
       const { data: membership } = await supabase
         .from('association_members')
         .select('role')
-        .eq('association_id', params.id)
+        .eq('association_id', id)
         .eq('user_id', user.id)
         .eq('status', 'active')
         .single()
@@ -57,7 +54,7 @@ export default function AddMemberPage({
       const { error: memberError } = await supabase
         .from('members')
         .insert({
-          association_id: params.id,
+          association_id: id,
           full_name: formData.full_name,
           email: formData.email || null,
           phone: formData.phone || null,
@@ -71,7 +68,7 @@ export default function AddMemberPage({
       if (memberError) throw memberError
 
       // Redirect to members list
-      router.push(`/associations/${params.id}/members`)
+      router.push(`/associations/${id}/members`)
     } catch (err) {
       console.error('Error creating member:', err)
       setError(err instanceof Error ? err.message : 'Ett fel uppstod när medlemmen skulle läggas till')
@@ -241,7 +238,7 @@ export default function AddMemberPage({
 
             <div className="flex justify-end space-x-3 pt-4">
               <Link
-                href={`/associations/${params.id}/members`}
+                href={`/associations/${id}/members`}
                 className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
                 Avbryt

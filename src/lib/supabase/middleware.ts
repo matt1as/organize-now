@@ -58,12 +58,8 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(redirectUrl)
   }
 
-  // Redirect to dashboard if accessing auth routes while authenticated
-  if (isAuthRoute && user) {
-    const redirectUrl = request.nextUrl.clone()
-    redirectUrl.pathname = '/dashboard'
-    return NextResponse.redirect(redirectUrl)
-  }
+  // Allow access to auth routes even if authenticated (helps avoid redirect loops on sign-out)
+  // Previously we redirected authenticated users from /login to /dashboard here.
 
   return response
 }

@@ -41,3 +41,1272 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
  ✓ Compiled /associations/new in 155ms
  GET /associations/new 200 in 178ms
  ✓ Compiled in 23ms
+ GET / 200 in 63ms
+ GET / 200 in 46ms
+ GET /login 200 in 29ms
+ GET /auth/callback?code=334528ee-8f87-4f04-a786-8e6078c5f760 307 in 241ms
+ GET /login 200 in 44ms
+ GET / 200 in 56ms
+ GET /login 200 in 27ms
+ GET /auth/callback?code=8547a2ec-4dd8-466d-b73b-418d23584620 307 in 256ms
+ GET /dashboard 200 in 102ms
+ GET /associations/new 200 in 85ms
+ GET / 200 in 49ms
+ GET /login 200 in 28ms
+ GET /auth/callback?code=df01ad4c-d505-41f5-879b-23e023b79f34 307 in 262ms
+ GET /dashboard 200 in 144ms
+ GET /associations/new 200 in 29ms
+ GET / 200 in 70ms
+ GET /login 200 in 30ms
+ GET /auth/callback?code=02fbf3a3-1d01-4b75-85c5-5b55655ff401 307 in 254ms
+ GET /dashboard 200 in 92ms
+ GET /associations/new 200 in 30ms
+ ✓ Compiled in 16ms
+ GET / 200 in 49ms
+ GET /login 200 in 27ms
+ GET /auth/callback?code=7290d870-4dd1-4314-8aba-21d4800c39a3 307 in 256ms
+ GET /dashboard 200 in 95ms
+ GET /associations/new 200 in 72ms
+ GET / 200 in 40ms
+ GET /login 200 in 24ms
+ GET /auth/callback?code=945e5fb2-b0d6-4635-959e-318ddae91399 307 in 256ms
+ GET /dashboard 200 in 104ms
+ GET /associations/new 200 in 31ms
+ GET / 200 in 77ms
+ GET /login 200 in 29ms
+ GET /auth/callback?code=922cc6eb-8342-4fb5-968a-4c95779d8dc8 307 in 253ms
+ GET /dashboard 200 in 101ms
+ GET /associations/new 200 in 30ms
+ ✓ Compiled /associations/[id] in 147ms
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (assocError || !association) {
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   // Get member count
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:130:47)
+  128 |             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  129 |               <Link
+> 130 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  131 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  132 |               >
+  133 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:141:49)
+  139 |               {isLeader && (
+  140 |                 <Link
+> 141 |                   href={`/associations/${params.id}/members/add`}
+      |                                                 ^
+  142 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  143 |                 >
+  144 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:152:47)
+  150 |               
+  151 |               <Link
+> 152 |                 href={`/associations/${params.id}/events`}
+      |                                               ^
+  153 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  154 |               >
+  155 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:163:49)
+  161 |               {isAdmin && (
+  162 |                 <Link
+> 163 |                   href={`/associations/${params.id}/settings`}
+      |                                                 ^
+  164 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  165 |                 >
+  166 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:183:47)
+  181 |               </h3>
+  182 |               <Link
+> 183 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  184 |                 className="text-sm text-blue-600 hover:text-blue-500"
+  185 |               >
+  186 |                 Visa alla →
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:247:55)
+  245 |                     <div className="mt-6">
+  246 |                       <Link
+> 247 |                         href={`/associations/${params.id}/members/add`}
+      |                                                       ^
+  248 |                         className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+  249 |                       >
+  250 |                         Lägg till medlem
+ GET /associations/4935216a-a0ff-4867-968d-d016250c423d 200 in 503ms
+ ✓ Compiled /associations/[id]/members/add in 127ms
+ GET /associations/4935216a-a0ff-4867-968d-d016250c423d/members/add 200 in 306ms
+ ✓ Compiled /associations/[id]/members in 107ms
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (!association) {
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   const isLeader = membership.role === 'admin' || membership.role === 'leader'
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:60:47)
+  58 |             <div className="flex items-center space-x-4">
+  59 |               <Link
+> 60 |                 href={`/associations/${params.id}`}
+     |                                               ^
+  61 |                 className="text-gray-500 hover:text-gray-700"
+  62 |               >
+  63 |                 ← Tillbaka
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:76:47)
+  74 |             {isLeader && (
+  75 |               <Link
+> 76 |                 href={`/associations/${params.id}/members/add`}
+     |                                               ^
+  77 |                 className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+  78 |               >
+  79 |                 <svg className="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (src/app/associations/[id]/members/page.tsx:206:63)
+    at Array.map (<anonymous>)
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:157:32)
+  204 |                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+  205 |                               <Link
+> 206 |                                 href={`/associations/${params.id}/members/${member.id}/edit`}
+      |                                                               ^
+  207 |                                 className="text-blue-600 hover:text-blue-900"
+  208 |                               >
+  209 |                                 Redigera
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (src/app/associations/[id]/members/page.tsx:224:55)
+    at Array.map (<anonymous>)
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:221:28)
+  222 |                     <li key={member.id}>
+  223 |                       <Link
+> 224 |                         href={`/associations/${params.id}/members/${member.id}`}
+      |                                                       ^
+  225 |                         className="block hover:bg-gray-50 px-4 py-4"
+  226 |                       >
+  227 |                         <div className="flex items-center">
+ GET /associations/4935216a-a0ff-4867-968d-d016250c423d/members 200 in 346ms
+ GET / 200 in 41ms
+ GET /login 200 in 26ms
+ GET /auth/callback?code=91630ad9-8e30-4129-8120-33e7820d15e8 307 in 245ms
+ GET /dashboard 200 in 103ms
+ GET /associations/new 200 in 29ms
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (assocError || !association) {
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   // Get member count
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:130:47)
+  128 |             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  129 |               <Link
+> 130 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  131 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  132 |               >
+  133 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:141:49)
+  139 |               {isLeader && (
+  140 |                 <Link
+> 141 |                   href={`/associations/${params.id}/members/add`}
+      |                                                 ^
+  142 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  143 |                 >
+  144 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:152:47)
+  150 |               
+  151 |               <Link
+> 152 |                 href={`/associations/${params.id}/events`}
+      |                                               ^
+  153 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  154 |               >
+  155 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:163:49)
+  161 |               {isAdmin && (
+  162 |                 <Link
+> 163 |                   href={`/associations/${params.id}/settings`}
+      |                                                 ^
+  164 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  165 |                 >
+  166 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:183:47)
+  181 |               </h3>
+  182 |               <Link
+> 183 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  184 |                 className="text-sm text-blue-600 hover:text-blue-500"
+  185 |               >
+  186 |                 Visa alla →
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:247:55)
+  245 |                     <div className="mt-6">
+  246 |                       <Link
+> 247 |                         href={`/associations/${params.id}/members/add`}
+      |                                                       ^
+  248 |                         className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+  249 |                       >
+  250 |                         Lägg till medlem
+ GET /associations/f4806bfc-4838-4559-846d-91cf36cfb7b1 200 in 80ms
+ GET /associations/f4806bfc-4838-4559-846d-91cf36cfb7b1/members/add 200 in 32ms
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (!association) {
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   const isLeader = membership.role === 'admin' || membership.role === 'leader'
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:60:47)
+  58 |             <div className="flex items-center space-x-4">
+  59 |               <Link
+> 60 |                 href={`/associations/${params.id}`}
+     |                                               ^
+  61 |                 className="text-gray-500 hover:text-gray-700"
+  62 |               >
+  63 |                 ← Tillbaka
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:76:47)
+  74 |             {isLeader && (
+  75 |               <Link
+> 76 |                 href={`/associations/${params.id}/members/add`}
+     |                                               ^
+  77 |                 className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+  78 |               >
+  79 |                 <svg className="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (src/app/associations/[id]/members/page.tsx:206:63)
+    at Array.map (<anonymous>)
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:157:32)
+  204 |                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+  205 |                               <Link
+> 206 |                                 href={`/associations/${params.id}/members/${member.id}/edit`}
+      |                                                               ^
+  207 |                                 className="text-blue-600 hover:text-blue-900"
+  208 |                               >
+  209 |                                 Redigera
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (src/app/associations/[id]/members/page.tsx:224:55)
+    at Array.map (<anonymous>)
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:221:28)
+  222 |                     <li key={member.id}>
+  223 |                       <Link
+> 224 |                         href={`/associations/${params.id}/members/${member.id}`}
+      |                                                       ^
+  225 |                         className="block hover:bg-gray-50 px-4 py-4"
+  226 |                       >
+  227 |                         <div className="flex items-center">
+ GET /associations/f4806bfc-4838-4559-846d-91cf36cfb7b1/members 200 in 62ms
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (assocError || !association) {
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   // Get member count
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:130:47)
+  128 |             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  129 |               <Link
+> 130 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  131 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  132 |               >
+  133 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:141:49)
+  139 |               {isLeader && (
+  140 |                 <Link
+> 141 |                   href={`/associations/${params.id}/members/add`}
+      |                                                 ^
+  142 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  143 |                 >
+  144 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:152:47)
+  150 |               
+  151 |               <Link
+> 152 |                 href={`/associations/${params.id}/events`}
+      |                                               ^
+  153 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  154 |               >
+  155 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:163:49)
+  161 |               {isAdmin && (
+  162 |                 <Link
+> 163 |                   href={`/associations/${params.id}/settings`}
+      |                                                 ^
+  164 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  165 |                 >
+  166 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:183:47)
+  181 |               </h3>
+  182 |               <Link
+> 183 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  184 |                 className="text-sm text-blue-600 hover:text-blue-500"
+  185 |               >
+  186 |                 Visa alla →
+ GET /associations/f4806bfc-4838-4559-846d-91cf36cfb7b1 200 in 73ms
+ GET /dashboard 200 in 43ms
+ POST /dashboard 200 in 78ms
+ ✓ Compiled middleware in 2ms
+ ✓ Compiled in 16ms
+ GET / 200 in 46ms
+ GET /login 200 in 22ms
+ GET /auth/callback?code=3268105e-84ce-4af0-89ae-731b4d2e617d 307 in 254ms
+ GET /dashboard 200 in 104ms
+ GET /associations/new 200 in 31ms
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (assocError || !association) {
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   // Get member count
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:130:47)
+  128 |             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  129 |               <Link
+> 130 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  131 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  132 |               >
+  133 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:141:49)
+  139 |               {isLeader && (
+  140 |                 <Link
+> 141 |                   href={`/associations/${params.id}/members/add`}
+      |                                                 ^
+  142 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  143 |                 >
+  144 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:152:47)
+  150 |               
+  151 |               <Link
+> 152 |                 href={`/associations/${params.id}/events`}
+      |                                               ^
+  153 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  154 |               >
+  155 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:163:49)
+  161 |               {isAdmin && (
+  162 |                 <Link
+> 163 |                   href={`/associations/${params.id}/settings`}
+      |                                                 ^
+  164 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  165 |                 >
+  166 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:183:47)
+  181 |               </h3>
+  182 |               <Link
+> 183 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  184 |                 className="text-sm text-blue-600 hover:text-blue-500"
+  185 |               >
+  186 |                 Visa alla →
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:247:55)
+  245 |                     <div className="mt-6">
+  246 |                       <Link
+> 247 |                         href={`/associations/${params.id}/members/add`}
+      |                                                       ^
+  248 |                         className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+  249 |                       >
+  250 |                         Lägg till medlem
+ GET /associations/aca3db8a-091f-4a44-b299-15c73d41740e 200 in 77ms
+ GET /associations/aca3db8a-091f-4a44-b299-15c73d41740e/members/add 200 in 42ms
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (!association) {
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   const isLeader = membership.role === 'admin' || membership.role === 'leader'
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:60:47)
+  58 |             <div className="flex items-center space-x-4">
+  59 |               <Link
+> 60 |                 href={`/associations/${params.id}`}
+     |                                               ^
+  61 |                 className="text-gray-500 hover:text-gray-700"
+  62 |               >
+  63 |                 ← Tillbaka
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:76:47)
+  74 |             {isLeader && (
+  75 |               <Link
+> 76 |                 href={`/associations/${params.id}/members/add`}
+     |                                               ^
+  77 |                 className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+  78 |               >
+  79 |                 <svg className="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (src/app/associations/[id]/members/page.tsx:206:63)
+    at Array.map (<anonymous>)
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:157:32)
+  204 |                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+  205 |                               <Link
+> 206 |                                 href={`/associations/${params.id}/members/${member.id}/edit`}
+      |                                                               ^
+  207 |                                 className="text-blue-600 hover:text-blue-900"
+  208 |                               >
+  209 |                                 Redigera
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (src/app/associations/[id]/members/page.tsx:224:55)
+    at Array.map (<anonymous>)
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:221:28)
+  222 |                     <li key={member.id}>
+  223 |                       <Link
+> 224 |                         href={`/associations/${params.id}/members/${member.id}`}
+      |                                                       ^
+  225 |                         className="block hover:bg-gray-50 px-4 py-4"
+  226 |                       >
+  227 |                         <div className="flex items-center">
+ GET /associations/aca3db8a-091f-4a44-b299-15c73d41740e/members 200 in 80ms
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (assocError || !association) {
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   // Get member count
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:130:47)
+  128 |             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  129 |               <Link
+> 130 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  131 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  132 |               >
+  133 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:141:49)
+  139 |               {isLeader && (
+  140 |                 <Link
+> 141 |                   href={`/associations/${params.id}/members/add`}
+      |                                                 ^
+  142 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  143 |                 >
+  144 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:152:47)
+  150 |               
+  151 |               <Link
+> 152 |                 href={`/associations/${params.id}/events`}
+      |                                               ^
+  153 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  154 |               >
+  155 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:163:49)
+  161 |               {isAdmin && (
+  162 |                 <Link
+> 163 |                   href={`/associations/${params.id}/settings`}
+      |                                                 ^
+  164 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  165 |                 >
+  166 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:183:47)
+  181 |               </h3>
+  182 |               <Link
+> 183 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  184 |                 className="text-sm text-blue-600 hover:text-blue-500"
+  185 |               >
+  186 |                 Visa alla →
+ GET /associations/aca3db8a-091f-4a44-b299-15c73d41740e 200 in 74ms
+ GET /dashboard 200 in 39ms
+ ✓ Compiled /auth/signout in 80ms
+ POST /auth/signout 302 in 332ms
+ GET /login 200 in 44ms
+ GET /associations/new 200 in 124ms
+ GET /login 200 in 48ms
+ GET /auth/callback?code=63d879a5-8f11-4df2-a0eb-455b4a4e21ac 307 in 286ms
+ GET /login?redirectTo=%2Fdashboard 200 in 48ms
+ GET /auth/callback?code=161ebb67-0ed7-4ce9-9f0a-8407f3bb3659 307 in 252ms
+ GET /dashboard 200 in 119ms
+ GET /associations/new 200 in 51ms
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (assocError || !association) {
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   // Get member count
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:130:47)
+  128 |             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  129 |               <Link
+> 130 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  131 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  132 |               >
+  133 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:141:49)
+  139 |               {isLeader && (
+  140 |                 <Link
+> 141 |                   href={`/associations/${params.id}/members/add`}
+      |                                                 ^
+  142 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  143 |                 >
+  144 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:152:47)
+  150 |               
+  151 |               <Link
+> 152 |                 href={`/associations/${params.id}/events`}
+      |                                               ^
+  153 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  154 |               >
+  155 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:163:49)
+  161 |               {isAdmin && (
+  162 |                 <Link
+> 163 |                   href={`/associations/${params.id}/settings`}
+      |                                                 ^
+  164 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  165 |                 >
+  166 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:183:47)
+  181 |               </h3>
+  182 |               <Link
+> 183 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  184 |                 className="text-sm text-blue-600 hover:text-blue-500"
+  185 |               >
+  186 |                 Visa alla →
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:247:55)
+  245 |                     <div className="mt-6">
+  246 |                       <Link
+> 247 |                         href={`/associations/${params.id}/members/add`}
+      |                                                       ^
+  248 |                         className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+  249 |                       >
+  250 |                         Lägg till medlem
+ GET /associations/db07b47c-d7ed-4ec8-9f28-eb0aad598fa9 200 in 113ms
+ ✓ Compiled /_not-found/page in 152ms
+ GET /associations/db07b47c-d7ed-4ec8-9f28-eb0aad598fa9/events 404 in 185ms
+ GET /associations/db07b47c-d7ed-4ec8-9f28-eb0aad598fa9/events 404 in 43ms
+ GET /associations/db07b47c-d7ed-4ec8-9f28-eb0aad598fa9/members/add 200 in 52ms
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (!association) {
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   const isLeader = membership.role === 'admin' || membership.role === 'leader'
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:60:47)
+  58 |             <div className="flex items-center space-x-4">
+  59 |               <Link
+> 60 |                 href={`/associations/${params.id}`}
+     |                                               ^
+  61 |                 className="text-gray-500 hover:text-gray-700"
+  62 |               >
+  63 |                 ← Tillbaka
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:76:47)
+  74 |             {isLeader && (
+  75 |               <Link
+> 76 |                 href={`/associations/${params.id}/members/add`}
+     |                                               ^
+  77 |                 className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+  78 |               >
+  79 |                 <svg className="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (src/app/associations/[id]/members/page.tsx:206:63)
+    at Array.map (<anonymous>)
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:157:32)
+  204 |                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+  205 |                               <Link
+> 206 |                                 href={`/associations/${params.id}/members/${member.id}/edit`}
+      |                                                               ^
+  207 |                                 className="text-blue-600 hover:text-blue-900"
+  208 |                               >
+  209 |                                 Redigera
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (src/app/associations/[id]/members/page.tsx:224:55)
+    at Array.map (<anonymous>)
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:221:28)
+  222 |                     <li key={member.id}>
+  223 |                       <Link
+> 224 |                         href={`/associations/${params.id}/members/${member.id}`}
+      |                                                       ^
+  225 |                         className="block hover:bg-gray-50 px-4 py-4"
+  226 |                       >
+  227 |                         <div className="flex items-center">
+ GET /associations/db07b47c-d7ed-4ec8-9f28-eb0aad598fa9/members 200 in 84ms
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (assocError || !association) {
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   // Get member count
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:130:47)
+  128 |             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  129 |               <Link
+> 130 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  131 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  132 |               >
+  133 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:141:49)
+  139 |               {isLeader && (
+  140 |                 <Link
+> 141 |                   href={`/associations/${params.id}/members/add`}
+      |                                                 ^
+  142 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  143 |                 >
+  144 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:152:47)
+  150 |               
+  151 |               <Link
+> 152 |                 href={`/associations/${params.id}/events`}
+      |                                               ^
+  153 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  154 |               >
+  155 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:163:49)
+  161 |               {isAdmin && (
+  162 |                 <Link
+> 163 |                   href={`/associations/${params.id}/settings`}
+      |                                                 ^
+  164 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  165 |                 >
+  166 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:183:47)
+  181 |               </h3>
+  182 |               <Link
+> 183 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  184 |                 className="text-sm text-blue-600 hover:text-blue-500"
+  185 |               >
+  186 |                 Visa alla →
+ GET /associations/db07b47c-d7ed-4ec8-9f28-eb0aad598fa9 200 in 107ms
+ GET /associations/db07b47c-d7ed-4ec8-9f28-eb0aad598fa9/settings 404 in 40ms
+ GET /associations/db07b47c-d7ed-4ec8-9f28-eb0aad598fa9/settings 404 in 46ms
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (!association) {
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   const isLeader = membership.role === 'admin' || membership.role === 'leader'
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:60:47)
+  58 |             <div className="flex items-center space-x-4">
+  59 |               <Link
+> 60 |                 href={`/associations/${params.id}`}
+     |                                               ^
+  61 |                 className="text-gray-500 hover:text-gray-700"
+  62 |               >
+  63 |                 ← Tillbaka
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:76:47)
+  74 |             {isLeader && (
+  75 |               <Link
+> 76 |                 href={`/associations/${params.id}/members/add`}
+     |                                               ^
+  77 |                 className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+  78 |               >
+  79 |                 <svg className="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (src/app/associations/[id]/members/page.tsx:206:63)
+    at Array.map (<anonymous>)
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:157:32)
+  204 |                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+  205 |                               <Link
+> 206 |                                 href={`/associations/${params.id}/members/${member.id}/edit`}
+      |                                                               ^
+  207 |                                 className="text-blue-600 hover:text-blue-900"
+  208 |                               >
+  209 |                                 Redigera
+Error: Route "/associations/[id]/members" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (src/app/associations/[id]/members/page.tsx:224:55)
+    at Array.map (<anonymous>)
+    at MembersListPage (src/app/associations/[id]/members/page.tsx:221:28)
+  222 |                     <li key={member.id}>
+  223 |                       <Link
+> 224 |                         href={`/associations/${params.id}/members/${member.id}`}
+      |                                                       ^
+  225 |                         className="block hover:bg-gray-50 px-4 py-4"
+  226 |                       >
+  227 |                         <div className="flex items-center">
+ GET /associations/db07b47c-d7ed-4ec8-9f28-eb0aad598fa9/members 200 in 95ms
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (assocError || !association) {
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   // Get member count
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:130:47)
+  128 |             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  129 |               <Link
+> 130 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  131 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  132 |               >
+  133 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:141:49)
+  139 |               {isLeader && (
+  140 |                 <Link
+> 141 |                   href={`/associations/${params.id}/members/add`}
+      |                                                 ^
+  142 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  143 |                 >
+  144 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:152:47)
+  150 |               
+  151 |               <Link
+> 152 |                 href={`/associations/${params.id}/events`}
+      |                                               ^
+  153 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  154 |               >
+  155 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:163:49)
+  161 |               {isAdmin && (
+  162 |                 <Link
+> 163 |                   href={`/associations/${params.id}/settings`}
+      |                                                 ^
+  164 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  165 |                 >
+  166 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:183:47)
+  181 |               </h3>
+  182 |               <Link
+> 183 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  184 |                 className="text-sm text-blue-600 hover:text-blue-500"
+  185 |               >
+  186 |                 Visa alla →
+ GET /associations/db07b47c-d7ed-4ec8-9f28-eb0aad598fa9 200 in 133ms
+ GET /dashboard 200 in 90ms
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (assocError || !association) {
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   // Get member count
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:130:47)
+  128 |             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  129 |               <Link
+> 130 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  131 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  132 |               >
+  133 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:141:49)
+  139 |               {isLeader && (
+  140 |                 <Link
+> 141 |                   href={`/associations/${params.id}/members/add`}
+      |                                                 ^
+  142 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  143 |                 >
+  144 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:152:47)
+  150 |               
+  151 |               <Link
+> 152 |                 href={`/associations/${params.id}/events`}
+      |                                               ^
+  153 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  154 |               >
+  155 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:163:49)
+  161 |               {isAdmin && (
+  162 |                 <Link
+> 163 |                   href={`/associations/${params.id}/settings`}
+      |                                                 ^
+  164 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  165 |                 >
+  166 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:183:47)
+  181 |               </h3>
+  182 |               <Link
+> 183 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  184 |                 className="text-sm text-blue-600 hover:text-blue-500"
+  185 |               >
+  186 |                 Visa alla →
+ GET /associations/db07b47c-d7ed-4ec8-9f28-eb0aad598fa9 200 in 105ms
+ GET /dashboard 200 in 81ms
+ ✓ Compiled in 27ms
+ GET /dashboard 200 in 121ms
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (assocError || !association) {
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   // Get member count
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:130:47)
+  128 |             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  129 |               <Link
+> 130 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  131 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  132 |               >
+  133 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:141:49)
+  139 |               {isLeader && (
+  140 |                 <Link
+> 141 |                   href={`/associations/${params.id}/members/add`}
+      |                                                 ^
+  142 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  143 |                 >
+  144 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:152:47)
+  150 |               
+  151 |               <Link
+> 152 |                 href={`/associations/${params.id}/events`}
+      |                                               ^
+  153 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  154 |               >
+  155 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:163:49)
+  161 |               {isAdmin && (
+  162 |                 <Link
+> 163 |                   href={`/associations/${params.id}/settings`}
+      |                                                 ^
+  164 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  165 |                 >
+  166 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:183:47)
+  181 |               </h3>
+  182 |               <Link
+> 183 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  184 |                 className="text-sm text-blue-600 hover:text-blue-500"
+  185 |               >
+  186 |                 Visa alla →
+ GET /associations/db07b47c-d7ed-4ec8-9f28-eb0aad598fa9 200 in 98ms
+ GET /dashboard 200 in 78ms
+ POST /auth/signout 302 in 300ms
+ GET /login 200 in 61ms
+ GET / 200 in 75ms
+ GET /login 200 in 50ms
+ GET /auth/callback?code=08e2f975-5397-421b-9b6a-4afa84d8bf71 307 in 255ms
+ GET /dashboard 200 in 89ms
+ POST /auth/signout 302 in 268ms
+ GET /login 200 in 61ms
+ GET /auth/callback?code=cb8a9465-3dad-46be-a573-6b73efb5d784 307 in 263ms
+ GET /dashboard 200 in 95ms
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:23:22)
+  21 |     .from('associations')
+  22 |     .select('*')
+> 23 |     .eq('id', params.id)
+     |                      ^
+  24 |     .single()
+  25 |
+  26 |   if (assocError || !association) {
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:34:34)
+  32 |     .from('association_members')
+  33 |     .select('*')
+> 34 |     .eq('association_id', params.id)
+     |                                  ^
+  35 |     .eq('user_id', user.id)
+  36 |     .eq('status', 'active')
+  37 |     .single()
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:47:34)
+  45 |     .from('members')
+  46 |     .select('*')
+> 47 |     .eq('association_id', params.id)
+     |                                  ^
+  48 |     .order('full_name')
+  49 |
+  50 |   // Get member count
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:130:47)
+  128 |             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  129 |               <Link
+> 130 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  131 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  132 |               >
+  133 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:141:49)
+  139 |               {isLeader && (
+  140 |                 <Link
+> 141 |                   href={`/associations/${params.id}/members/add`}
+      |                                                 ^
+  142 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  143 |                 >
+  144 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:152:47)
+  150 |               
+  151 |               <Link
+> 152 |                 href={`/associations/${params.id}/events`}
+      |                                               ^
+  153 |                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  154 |               >
+  155 |                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:163:49)
+  161 |               {isAdmin && (
+  162 |                 <Link
+> 163 |                   href={`/associations/${params.id}/settings`}
+      |                                                 ^
+  164 |                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+  165 |                 >
+  166 |                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+Error: Route "/associations/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at AssociationDetailPage (src/app/associations/[id]/page.tsx:183:47)
+  181 |               </h3>
+  182 |               <Link
+> 183 |                 href={`/associations/${params.id}/members`}
+      |                                               ^
+  184 |                 className="text-sm text-blue-600 hover:text-blue-500"
+  185 |               >
+  186 |                 Visa alla →
+ GET /associations/db07b47c-d7ed-4ec8-9f28-eb0aad598fa9 200 in 94ms
+ ✓ Compiled in 38ms
+ ✓ Compiled in 19ms

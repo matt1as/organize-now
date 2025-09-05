@@ -6,6 +6,13 @@ test.describe('Full OrganizeNow Flow Test', () => {
   const memberName = 'Test Medlem';
 
   test('Complete flow: Login → Create Association → Add Member', async ({ page }) => {
+    // Debug listeners
+    page.on('console', msg => {
+      if (msg.type() === 'error') console.log('Browser console error:', msg.text());
+    });
+    page.on('response', response => {
+      if (response.status() >= 400) console.log(`HTTP ${response.status()} ${response.request().method()} ${response.url()}`);
+    });
     console.log('=== Starting Full Flow Test ===');
     console.log('Test email:', testEmail);
 
@@ -106,7 +113,7 @@ test.describe('Full OrganizeNow Flow Test', () => {
     console.log('✓ Member added successfully');
 
     // Verify member appears in list
-    await expect(page.locator(`text=${memberName}`)).toBeVisible();
+    await expect(page.locator(`text=${memberName}`).first()).toBeVisible();
 
     // 8. Navigate back to association page
     console.log('Step 8: Navigating back to association page...');

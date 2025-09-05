@@ -1,12 +1,14 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import { use } from 'react'
 
 export default async function AssociationDetailPage({
   params
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
+  const { id } = use(params)
   const supabase = await createClient()
   
   // Get current user
@@ -20,7 +22,7 @@ export default async function AssociationDetailPage({
   const { data: association, error: assocError } = await supabase
     .from('associations')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .single()
 
   if (assocError || !association) {
@@ -31,7 +33,7 @@ export default async function AssociationDetailPage({
   const { data: membership } = await supabase
     .from('association_members')
     .select('*')
-    .eq('association_id', params.id)
+    .eq('association_id', id)
     .eq('user_id', user.id)
     .eq('status', 'active')
     .single()
@@ -44,7 +46,7 @@ export default async function AssociationDetailPage({
   const { data: members } = await supabase
     .from('members')
     .select('*')
-    .eq('association_id', params.id)
+    .eq('association_id', id)
     .order('full_name')
 
   // Get member count
@@ -127,7 +129,7 @@ export default async function AssociationDetailPage({
             <h2 className="text-lg font-medium text-gray-900 mb-4">Snabbåtgärder</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <Link
-                href={`/associations/${params.id}/members`}
+                href={`/associations/${id}/members`}
                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
               >
                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -138,7 +140,7 @@ export default async function AssociationDetailPage({
               
               {isLeader && (
                 <Link
-                  href={`/associations/${params.id}/members/add`}
+                  href={`/associations/${id}/members/add`}
                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
                 >
                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -149,7 +151,7 @@ export default async function AssociationDetailPage({
               )}
               
               <Link
-                href={`/associations/${params.id}/events`}
+                href={`/associations/${id}/events`}
                 className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
               >
                 <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -160,7 +162,7 @@ export default async function AssociationDetailPage({
               
               {isAdmin && (
                 <Link
-                  href={`/associations/${params.id}/settings`}
+                  href={`/associations/${id}/settings`}
                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
                 >
                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

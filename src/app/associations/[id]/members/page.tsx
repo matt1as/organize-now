@@ -1,12 +1,16 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import { use } from 'react'
 
 export default async function MembersListPage({
-  params
+  params,
+  searchParams,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
+  searchParams: { q?: string }
 }) {
+  const { id } = use(params)
   const supabase = await createClient()
   
   // Get current user
@@ -20,7 +24,7 @@ export default async function MembersListPage({
   const { data: association } = await supabase
     .from('associations')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .single()
 
   if (!association) {
@@ -31,7 +35,7 @@ export default async function MembersListPage({
   const { data: membership } = await supabase
     .from('association_members')
     .select('*')
-    .eq('association_id', params.id)
+    .eq('association_id', id)
     .eq('user_id', user.id)
     .eq('status', 'active')
     .single()
@@ -40,12 +44,21 @@ export default async function MembersListPage({
     redirect('/dashboard')
   }
 
-  // Get all members
-  const { data: members } = await supabase
+  // Get all members optionally filtered by search
+  const q = (searchParams?.q || '').trim()
+  let membersQuery = supabase
     .from('members')
     .select('*')
-    .eq('association_id', params.id)
-    .order('full_name')
+    .eq('association_id', id)
+
+  if (q) {
+    // Search by name, email or phone (case-insensitive)
+    membersQuery = membersQuery.or(
+      `full_name.ilike.%${q}%,email.ilike.%${q}%,phone.ilike.%${q}%`
+    )
+  }
+
+  const { data: members } = await membersQuery.order('full_name')
 
   const isLeader = membership.role === 'admin' || membership.role === 'leader'
 
@@ -57,7 +70,7 @@ export default async function MembersListPage({
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center space-x-4">
               <Link
-                href={`/associations/${params.id}`}
+                href={`/associations/${id}`}
                 className="text-gray-500 hover:text-gray-700"
               >
                 ← Tillbaka
@@ -73,7 +86,7 @@ export default async function MembersListPage({
             </div>
             {isLeader && (
               <Link
-                href={`/associations/${params.id}/members/add`}
+                href={`/associations/${id}/members/add`}
                 className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 <svg className="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -91,9 +104,9 @@ export default async function MembersListPage({
         <div className="px-4 py-6 sm:px-0">
           {/* Search and filters */}
           <div className="bg-white shadow rounded-lg p-4 mb-6">
-            <div className="flex flex-col sm:flex-row gap-4">
+            <form className="flex flex-col sm:flex-row gap-4" method="get">
               <div className="flex-1">
-                <label htmlFor="search" className="sr-only">
+                <label htmlFor="q" className="sr-only">
                   Sök medlemmar
                 </label>
                 <div className="relative">
@@ -104,22 +117,23 @@ export default async function MembersListPage({
                   </div>
                   <input
                     type="search"
-                    name="search"
-                    id="search"
-className="block w-full pl-10 pr-3 py-2 rounded-md border border-gray-300 bg-white text-gray-900 placeholder-gray-500 leading-5 focus:outline-none focus:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-600 sm:text-sm"
+                    name="q"
+                    id="q"
+                    defaultValue={q}
+                    className="block w-full pl-10 pr-3 py-2 rounded-md border border-gray-300 bg-white text-gray-900 placeholder-gray-500 leading-5 focus:outline-none focus:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-600 sm:text-sm"
                     placeholder="Sök efter namn, e-post eller telefon..."
                   />
                 </div>
               </div>
               <div className="flex gap-2">
-                <select className="block rounded-md border-gray-300 py-2 pl-3 pr-10 text-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500">
-                  <option>Alla status</option>
-                  <option>Aktiva</option>
-                  <option>Inaktiva</option>
-                  <option>Väntande</option>
-                </select>
+                <button
+                  type="submit"
+                  className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  Sök
+                </button>
               </div>
-            </div>
+            </form>
           </div>
 
           {/* Members list */}
@@ -203,7 +217,7 @@ className="block w-full pl-10 pr-3 py-2 rounded-md border border-gray-300 bg-whi
                           {isLeader && (
                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                               <Link
-                                href={`/associations/${params.id}/members/${member.id}/edit`}
+                                href={`/associations/${id}/members/${member.id}/edit`}
                                 className="text-blue-600 hover:text-blue-900"
                               >
                                 Redigera
@@ -221,7 +235,7 @@ className="block w-full pl-10 pr-3 py-2 rounded-md border border-gray-300 bg-whi
                   {members.map((member) => (
                     <li key={member.id}>
                       <Link
-                        href={`/associations/${params.id}/members/${member.id}`}
+                        href={`/associations/${id}/members/${member.id}`}
                         className="block hover:bg-gray-50 px-4 py-4"
                       >
                         <div className="flex items-center">
@@ -289,7 +303,7 @@ className="block w-full pl-10 pr-3 py-2 rounded-md border border-gray-300 bg-whi
                 {isLeader && (
                   <div className="mt-6">
                     <Link
-                      href={`/associations/${params.id}/members/add`}
+                      href={`/associations/${id}/members/add`}
                       className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                     >
                       <svg className="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

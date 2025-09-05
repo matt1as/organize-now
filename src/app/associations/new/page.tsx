@@ -83,6 +83,7 @@ export default function NewAssociationPage() {
         }, { returning: 'minimal' })
 
       if (memberError) {
+        console.error('Member insert error:', memberError)
         setError(memberError.message ?? 'Föreningen skapades, men kunde inte lägga till dig som administratör.')
         return
       }
