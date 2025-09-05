@@ -2,8 +2,11 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function updateSession(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({
-    request,
+  // Create a response that we can modify
+  let response = NextResponse.next({
+    request: {
+      headers: request.headers,
+    },
   })
 
   const supabase = createServerClient(
@@ -15,19 +18,23 @@ export async function updateSession(request: NextRequest) {
           return request.cookies.getAll()
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value }) =>
-            request.cookies.set(name, value)
-          )
-          supabaseResponse = NextResponse.next({
-            request,
+          cookiesToSet.forEach(({ name, value, options }) => {
+            request.cookies.set({ name, value, ...options })
+            response.cookies.set({ name, value, ...options })
           })
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          )
         },
       },
     }
   )
+
+  const path = request.nextUrl.pathname
+  
+  // If we receive a code on the home page, redirect to auth/callback to handle it
+  if (path === '/' && request.nextUrl.searchParams.get('code')) {
+    const redirectUrl = request.nextUrl.clone()
+    redirectUrl.pathname = '/auth/callback'
+    return NextResponse.redirect(redirectUrl)
+  }
 
   // This will refresh the session if expired - required for Server Components
   const {
@@ -38,8 +45,6 @@ export async function updateSession(request: NextRequest) {
   const protectedRoutes = ['/dashboard', '/members', '/groups', '/settings']
   const authRoutes = ['/login', '/signup', '/auth']
   const publicRoutes = ['/', '/about', '/contact']
-
-  const path = request.nextUrl.pathname
 
   // Check if the current path starts with any protected route
   const isProtectedRoute = protectedRoutes.some(route => path.startsWith(route))
@@ -60,5 +65,5 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(redirectUrl)
   }
 
-  return supabaseResponse
+  return response
 }
