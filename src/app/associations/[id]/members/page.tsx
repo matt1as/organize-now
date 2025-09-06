@@ -1,7 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { use } from 'react'
 
 export default async function MembersListPage({
   params,
@@ -10,7 +9,7 @@ export default async function MembersListPage({
   params: Promise<{ id: string }>
   searchParams: { q?: string }
 }) {
-  const { id } = use(params)
+  const { id } = await params
   const supabase = await createClient()
   
   // Get current user
@@ -86,13 +85,13 @@ export default async function MembersListPage({
             </div>
             {isLeader && (
               <Link
-                href={`/associations/${id}/members/add`}
+                href={`/associations/${id}/members/invite`}
                 className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 <svg className="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
-                Lägg till medlem
+                Bjud in medlemmar
               </Link>
             )}
           </div>
@@ -303,13 +302,13 @@ export default async function MembersListPage({
                 {isLeader && (
                   <div className="mt-6">
                     <Link
-                      href={`/associations/${id}/members/add`}
+                      href={`/associations/${id}/members/invite`}
                       className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                     >
                       <svg className="-ml-1 mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                       </svg>
-                      Lägg till medlem
+                      Bjud in medlemmar
                     </Link>
                   </div>
                 )}
