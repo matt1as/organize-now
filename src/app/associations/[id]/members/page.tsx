@@ -216,10 +216,10 @@ export default async function MembersListPage({
                           {isLeader && (
                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                               <Link
-                                href={`/associations/${id}/members/${member.id}/edit`}
+                                href={`/associations/${id}/members/${member.id}`}
                                 className="text-blue-600 hover:text-blue-900"
                               >
-                                Redigera
+                                Visa
                               </Link>
                             </td>
                           )}
