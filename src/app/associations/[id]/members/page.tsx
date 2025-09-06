@@ -1,7 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { use } from 'react'
 
 export default async function MembersListPage({
   params,
@@ -10,7 +9,7 @@ export default async function MembersListPage({
   params: Promise<{ id: string }>
   searchParams: { q?: string }
 }) {
-  const { id } = use(params)
+  const { id } = await params
   const supabase = await createClient()
   
   // Get current user
