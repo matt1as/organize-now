@@ -113,11 +113,10 @@ export default function InviteMembersPage() {
         return
       }
 
-      // TODO: Send invitation email via Edge Function
-      // For now, we'll just show the invitation link
-      const inviteUrl = `${window.location.origin}/invite/${invitation.token}`
+      // Email sending would be implemented here via Supabase Edge Function or API route
+      // Currently showing success message as placeholder
       
-      setSuccess(`Inbjudan skickad till ${singleForm.email}`)
+      setSuccess(`Inbjudan skapad för ${singleForm.email}. Inbjudningslänk: ${window.location.origin}/invite/${invitation.token}`)
       
       // Reset form
       setSingleForm({
@@ -216,7 +215,7 @@ export default function InviteMembersPage() {
         return
       }
 
-      // Prepare invitations
+      // Prepare invitations with sanitized data
       const invitations = csvData.map(row => ({
         association_id: id,
         email: row.email.toLowerCase(),
@@ -224,7 +223,13 @@ export default function InviteMembersPage() {
         phone: row.phone || null,
         birth_date: row.birth_date || null,
         created_by: user.id,
-        member_data: row // Store all data for reference
+        member_data: {
+          // Only store expected fields to prevent data leakage
+          email: row.email,
+          full_name: row.full_name,
+          phone: row.phone,
+          birth_date: row.birth_date
+        }
       }))
 
       // Insert all invitations

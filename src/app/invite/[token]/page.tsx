@@ -173,7 +173,16 @@ export default function AcceptInvitationPage() {
 
       if (memberError) {
         console.error('Error creating member:', memberError)
-        // Don't show error to user, continue with account creation
+        // Try to clean up the created user account
+        try {
+          // Note: This requires service role key, which client-side doesn't have
+          // In production, this cleanup should be handled server-side
+          setError('Ett fel uppstod vid skapande av medlemskonto. Kontakta administratören.')
+          setSubmitting(false)
+          return
+        } catch (cleanupError) {
+          console.error('Failed to cleanup after member creation error:', cleanupError)
+        }
       }
 
       // Create association_members record linking user to association
@@ -189,6 +198,9 @@ export default function AcceptInvitationPage() {
 
         if (linkError) {
           console.error('Error linking user to association:', linkError)
+          setError('Kunde inte länka användaren till föreningen. Kontakta administratören för hjälp.')
+          setSubmitting(false)
+          return
         }
       }
 
