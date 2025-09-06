@@ -1,54 +1,36 @@
 ## Summary
 
-This PR sets up Supabase with Next.js, implements authentication and the initial database schema, and adds several fixes and improvements discovered during end-to-end testing.
+This PR implements the member invitation feature, allowing association leaders and admins to invite new members by email. Invited users receive an email with a unique invitation link, which they can use to join the association. The feature includes invitation creation, email delivery, invitation acceptance, and appropriate role assignment upon joining.
 
-### Changes since initial PR creation
+### Changes in this PR
 
-- Authentication & PKCE
-  - Set `auth.site_url` to `http://localhost:3000` and added explicit redirect allow-list for both `localhost` and `127.0.0.1`
-  - Simplified callback handling: redirect `/?code=...` to `/auth/callback` and exchange code there
-  - Allowed access to `/login` even when authenticated to prevent sign-out redirect loops
-- RLS Policies (Supabase)
-  - Added: "Creators can view their associations" (SELECT on `associations`)
-  - Added: "Creator can add self as admin" (INSERT on `association_members`)
-  - Removed recursive/broad policies that caused `infinite recursion detected in policy` errors on INSERT
-  - Replaced `association_members` SELECT policy with a non-recursive version to avoid insert-time recursion
-- Association creation flow
-  - Pre-generate `associationId` client-side and insert with `returning: 'minimal'` to avoid RLS-blocked SELECT
-  - Insert initial admin membership for creator
-- Next.js params cleanup
-  - Server components now unwrap params with `React.use()`
-  - Client components use `useParams()` from `next/navigation`
-  - Removes the Next.js 15 warnings regarding params being a Promise
-- Members
-  - Members list supports search with `?q=` across name/email/phone using `ilike`
-  - Add Member page with role checks (leader/admin), improved validation states
-- UI/UX
-  - Improved input contrast/readability in light/dark: `bg-white text-gray-900 placeholder-gray-500` + stronger focus rings
-  - Swedish copy for login, dashboard, and association screens
-- Tests
-  - Playwright full-flow test (Login → Create förening → Add member) added and passing locally
+- Added member invitation functionality:
+  - Leaders/admins can invite new members by entering their email address.
+  - Generates a unique, time-limited invitation link for each invite.
+  - Sends invitation emails to recipients with a secure join link.
+  - Handles invitation acceptance and membership creation.
+  - Prevents duplicate invitations and handles expired/invalid links gracefully.
+- Updated members list to show pending invitations.
+- Added UI for managing and resending/canceling invitations.
+- Added backend API endpoints and database schema for invitations.
+- Added tests for invitation flow (invite, accept, error cases).
 
 ### New & Updated Pages
-- `/login`, `/auth/callback`, `/auth/signout`
-- `/dashboard`
-- `/associations/new`
-- `/associations/[id]`
-- `/associations/[id]/members`
-- `/associations/[id]/members/add`
+- `/associations/[id]/members` (now shows pending invitations)
+- `/associations/[id]/members/invite` (invite form)
+- `/invite/[token]` (invitation acceptance page)
 
 ### Local Testing
 1. Start services:
-   - `supabase start`
    - `npm run dev`
-2. Go to `http://localhost:3000/login` and enter any email
-3. Open Inbucket `http://localhost:54324`, open the email, click magic link
-4. Create a förening at `/associations/new`
-5. Add a member at `/associations/{id}/members/add`
+   - (If using email testing, ensure maildev or similar is running)
+2. Go to an association's members page and click "Invite Member".
+3. Enter an email address and send the invite.
+4. Open the test email inbox, click the invitation link, and accept the invite.
+5. Verify the new member appears in the members list.
 
 ### Migration Impact
-- Local `supabase db reset` was run to apply new RLS/migrations; this resets local data
-- Developers will need to re-login via magic link after pulling
+- Database migrations add a new `invitations` table.
+- No breaking changes to existing data.
 
-If you’d like, I can follow up with the Activities feature (events table + pages) next.
-
+If you have feedback or suggestions for the invitation flow, please let me know!
