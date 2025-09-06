@@ -14,7 +14,10 @@ const customJestConfig = {
     '<rootDir>/node_modules/',
     '<rootDir>/test-results/',
     '<rootDir>/playwright-report/',
-    '<rootDir>/test-*.spec.ts',
+  ],
+  testMatch: [
+    '<rootDir>/src/**/__tests__/**/*.(js|jsx|ts|tsx)',
+    '<rootDir>/src/**/*.(test|spec).(js|jsx|ts|tsx)',
   ],
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
