@@ -140,13 +140,13 @@ export default async function AssociationDetailPage({
               
               {isLeader && (
                 <Link
-                  href={`/associations/${id}/members/add`}
+                  href={`/associations/${id}/members/invite`}
                   className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
                 >
                   <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                   </svg>
-                  <span className="text-sm text-gray-900">Lägg till medlem</span>
+                  <span className="text-sm text-gray-900">Bjud in medlem</span>
                 </Link>
               )}
               
@@ -182,7 +182,7 @@ export default async function AssociationDetailPage({
                 Senaste medlemmarna
               </h3>
               <Link
-                href={`/associations/${params.id}/members`}
+                href={`/associations/${id}/members`}
                 className="text-sm text-blue-600 hover:text-blue-500"
               >
                 Visa alla →
@@ -246,10 +246,10 @@ export default async function AssociationDetailPage({
                   {isLeader && (
                     <div className="mt-6">
                       <Link
-                        href={`/associations/${params.id}/members/add`}
+                        href={`/associations/${id}/members/invite`}
                         className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                       >
-                        Lägg till medlem
+                        Bjud in medlemmar
                       </Link>
                     </div>
                   )}
